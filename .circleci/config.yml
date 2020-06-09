@@ -2,6 +2,6 @@ version: 2.1
 orbs:
   terraform: devops-workflow/terraform@0.0.1
 workflows:
-  terraformtest:
+  "terraformtest":
     jobs:
       - terraform_test
