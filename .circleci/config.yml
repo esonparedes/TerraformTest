@@ -13,3 +13,9 @@ jobs:
           name: terraform init
           command: |
             terraform init
+            
+workflows:
+  version: 2.1
+  terraform:
+    jobs:
+      - terraform_init
