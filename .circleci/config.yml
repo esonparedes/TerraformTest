@@ -1,6 +1,6 @@
 version: 2.1
 jobs:
-  terraform_init:
+  terraform_plan:
     docker: 
       - image: hashicorp/terraform:light # the primary container, where your job's commands are run
       
@@ -9,12 +9,13 @@ jobs:
     steps:
       - checkout # check out the code in the project directory
       - run:
-          name: terraform init
+          name: terraform init & plan
           command: |
             terraform init
+            terraform plan
             
 workflows:
   version: 2.1
   terraform:
     jobs:
-      - terraform_init
+      - terraform_plan
