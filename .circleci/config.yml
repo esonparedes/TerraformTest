@@ -1,7 +1,15 @@
 version: 2.1
-orbs:
-  terraform: devops-workflow/terraform@0.0.1
-workflows:
-  terraform:
-    jobs:
-      - terraform/terraform_test
+jobs:
+  terraform_init:
+    docker: 
+      - image: hashicorp/terraform:light # the primary container, where your job's commands are run
+      - image: ubuntu:18.04
+      
+    working_directory: /workspace
+    
+    steps:
+      - checkout # check out the code in the project directory
+      - run:
+          name: terraform init
+          command: |
+            terraform init
